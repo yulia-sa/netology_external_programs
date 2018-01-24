@@ -6,6 +6,7 @@ img_new_width = '200'
 
 converted_dir_name = 'Converted'
 raw_dir_name = 'Source'
+raw_files_type = ['.jpg', '.png']
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 path_to_converted_files_dir = os.path.join(current_dir, converted_dir_name)
@@ -19,7 +20,7 @@ def create_converted_files_dir():
 def get_filelist():
     filelist = []
     for file_name in os.listdir(path=path_to_raw_files_dir):
-        if not file_name.startswith('.'):
+        if not file_name.startswith('.') and file_name.endswith(tuple(raw_files_type)):
             filelist.append(file_name)
     return filelist
 
